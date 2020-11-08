@@ -59,7 +59,7 @@ var pacificAtlantic = function(matrix) {
 let dfs = (matrix, row, col, prev, ocean) {
   if (row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length) return;
   if (matrix[row][col] < prev) return;
-  if (matrix[row][col] === 1) return;
+  if (ocean[row][col] === 1) return;
 
   ocean[row][col] = 1;
 
@@ -67,4 +67,4 @@ let dfs = (matrix, row, col, prev, ocean) {
   dfs(matrix, row - 1, col, matrix[row][col], ocean);
   dfs(matrix, row, col + 1, matrix[row][col], ocean);
   dfs(matrix, row, col - 1, matrix[row][col], ocean);
-}
+};
