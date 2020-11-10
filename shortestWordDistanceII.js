@@ -32,12 +32,18 @@ WordDistance.prototype.shortest = function(word1, word2) {
   let word1idxs = this.indexes[word1];
   let word2idxs = this.indexes[word2];
   let shortest = +Infinity;
+  let i = 0, j = 0;
 
-  for (let i of word1idxs) {
-      for (let j of word2idxs) {
-          shortest = Math.min(shortest, Math.abs(i-j));
+  while (i < word1idxs.length && j < word2idxs.length) {
+      shortest = Math.min(shortest, Math.abs(word1idxs[i] - word2idxs[j]));
+
+      if (word1idxs[i] < word2idxs[j]) {
+          i++;
+      } else {
+          j++;
       }
   }
+
   return shortest;
 };
 
